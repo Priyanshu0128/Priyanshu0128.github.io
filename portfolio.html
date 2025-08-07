@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu Laad - Java Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-in-out;
+        }
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skill-bar {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        .skill-bar.animate {
+            width: var(--skill-width);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Fixed Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-blue-600">Priyanshu Laad</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#courses" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Courses</a>
+                        <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#summary" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Summary</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#about" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">About</a>
+                <a href="#projects" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Projects</a>
+                <a href="#courses" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Courses</a>
+                <a href="#skills" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Skills</a>
+                <a href="#summary" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Summary</a>
+                <a href="#contact" class="nav-link block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="pt-16 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center section-fade">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Hi, I'm <span class="text-blue-600">Priyanshu Laad</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8">Java Developer & Software Engineer</p>
+                <p class="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">
+                    Passionate about building scalable applications with Java, Spring Framework, and modern web technologies.
+                </p>
+                <div class="space-x-4">
+                    <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300 inline-block">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition duration-300 inline-block">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="w-80 h-80 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white text-8xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Software Engineer</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            I'm a passionate Java Developer with 2 years of experience in building backend systems for Shopify e-commerce stores and custom business applications. I specialize in backend development using Java, Spring Boot, and both RESTful and GraphQL APIs.
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                           My expertise includes developing secure authentication mechanisms with JWT, optimizing complex MySQL queries for large datasets, and integrating third-party services to automate e-commerce operations. I partner directly with business stakeholders to translate requirements into maintainable, scalable backend solutions from ideation to production.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <strong class="text-gray-900">Location:</strong>
+                                <p class="text-gray-600">Indore, India</p>
+                            </div>
+                            <div>
+                                <strong class="text-gray-900">Experience:</strong>
+                                <p class="text-gray-600">2 Years</p>
+                            </div>
+                            <div>
+                                <strong class="text-gray-900">Email:</strong>
+                                <p class="text-gray-600">priyanshulaad28@gmail.com</p>
+                            </div>
+                            <div>
+                                <strong class="text-gray-900">Mobile:</strong>
+                                <p class="text-gray-600">+91 7694026775</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Featured Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 - RentTrack -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            <i class="fas fa-home text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">RentTrack – Owner-Tenant Rental Tracking System</h3>
+                            <div class="text-gray-600 mb-4 space-y-2">
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Built rental management supporting tenant registration, property allocation, and expense tracking</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Developed responsive UI using HTML5, CSS3, and Bootstrap with cross-browser and mobile support</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Combined RESTful APIs and authentication, enabling secure CRUD operations and scalable performance</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Java</span>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Spring Boot</span>
+                                <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-sm">HTML5</span>
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Bootstrap</span>
+                                <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">REST APIs</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 - SmartInventory -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                            <i class="fas fa-warehouse text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">SmartInventory – Inventory Analytics Dashboard</h3>
+                            <div class="text-gray-600 mb-4 space-y-2">
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Expanded Smart Inventory Management System with real-time tracking across multiple warehouses</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Applied secure role-based access (admin, manager, staff) with stock alerts, product categories, and order history</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Built with Java, MySQL ensuring modular code structure and scalable database performance</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Java</span>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">MySQL</span>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Analytics</span>
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Role-based Access</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 - Personal Finance Tracker -->
+                    <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <i class="fas fa-chart-pie text-white text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Personal Finance Tracker</h3>
+                            <div class="text-gray-600 mb-4 space-y-2">
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Built Java app to track expenses, categorize transactions, and generate monthly summaries</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Executed budget planning, expense notifications, and data visualization features using backend logic and SQL queries</p>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <i class="fas fa-check text-green-500 mt-1 text-xs"></i>
+                                    <p class="text-sm">Used Core Java and JDBC to interact with MySQL database for secure, persistent data storage</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Core Java</span>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">JDBC</span>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">MySQL</span>
+                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-sm">Data Visualization</span>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Certifications & Courses</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+                        <div class="text-blue-600 text-3xl mb-4">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Java 2.0/ J2EE</h3>
+                        <p class="text-gray-600 mb-3">Java 2.0/ J2EE</p>
+                        <p class="text-sm text-gray-500">Universal Informatics • 2023</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+                        <div class="text-green-600 text-3xl mb-4">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">C++ / OOPS</h3>
+                        <p class="text-gray-600 mb-3">C++ / OOPS Certification</p>
+                        <p class="text-sm text-gray-500">Universal Informatics • 2023</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg border border-orange-200">
+                        <div class="text-orange-600 text-3xl mb-4">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">AWS Solutions Architect</h3>
+                        <p class="text-gray-600 mb-3">Associate Level</p>
+                        <p class="text-sm text-gray-500">Amazon Web Services • 2022</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+                        <div class="text-purple-600 text-3xl mb-4">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Database Design</h3>
+                        <p class="text-gray-600 mb-3">Advanced SQL & Database Optimization</p>
+                        <p class="text-sm text-gray-500">Coursera • 2022</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg border border-red-200">
+                        <div class="text-red-600 text-3xl mb-4">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Docker & Kubernetes</h3>
+                        <p class="text-gray-600 mb-3">Container Orchestration</p>
+                        <p class="text-sm text-gray-500">Udemy • 2022</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-lg border border-indigo-200">
+                        <div class="text-indigo-600 text-3xl mb-4">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Microservices Architecture</h3>
+                        <p class="text-gray-600 mb-3">Design Patterns & Best Practices</p>
+                        <p class="text-sm text-gray-500">Pluralsight • 2021</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Technical Skills</h2>
+                
+                <!-- Programming Languages -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Programming Languages</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <!-- Java -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-600">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Java</h4>
+                        </div>
+
+                        <!-- J2EE -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-red-600">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">J2EE</h4>
+                        </div>
+
+                        <!-- C/C++ -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-700">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">C/C++</h4>
+                        </div>
+
+                        <!-- PHP -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-purple-600">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">PHP</h4>
+                        </div>
+
+                        <!-- JavaScript -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-yellow-500">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">JavaScript</h4>
+                        </div>
+
+                        <!-- HTML/CSS -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-500">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">HTML/CSS</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Technologies -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Frameworks & Technologies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <!-- Spring MVC -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-green-600">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Spring MVC</h4>
+                        </div>
+
+                        <!-- Spring Boot -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-green-700">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Spring Boot</h4>
+                        </div>
+
+                        <!-- React.js -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-cyan-500">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">React.js</h4>
+                        </div>
+
+                        <!-- REST APIs -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-600">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">REST APIs</h4>
+                        </div>
+
+                        <!-- JWT -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-red-600">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">JWT</h4>
+                        </div>
+
+                        <!-- AJAX -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-indigo-600">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">AJAX</h4>
+                        </div>
+
+                        <!-- Maven -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-700">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Maven</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Development Tools</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <!-- VS Code -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-600">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">VS Code</h4>
+                        </div>
+
+                        <!-- Eclipse -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-purple-700">
+                                <i class="fas fa-eclipse-alt"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Eclipse</h4>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-gray-800">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">GitHub</h4>
+                        </div>
+
+                        <!-- Postman -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-600">
+                                <i class="fas fa-mail-bulk"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Postman</h4>
+                        </div>
+
+                        <!-- Linux -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-black">
+                                <i class="fab fa-linux"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Linux</h4>
+                        </div>
+
+                        <!-- Windows -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-500">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Windows</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud & Databases -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Cloud & Databases</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <!-- AWS -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-500">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">AWS (Basic)</h4>
+                        </div>
+
+                        <!-- SQL -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-700">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">SQL</h4>
+                        </div>
+
+                        <!-- MySQL -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-600">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">MySQL</h4>
+                        </div>
+
+                        <!-- MongoDB -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-green-600">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">MongoDB</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Soft Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                        <!-- Problem Solving -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-purple-600">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Problem Solving</h4>
+                        </div>
+
+                        <!-- Communication -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-blue-600">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Communication</h4>
+                        </div>
+
+                        <!-- Collaboration -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-green-600">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Collaboration</h4>
+                        </div>
+
+                        <!-- Adaptability -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-orange-600">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Adaptability</h4>
+                        </div>
+
+                        <!-- Agile Practices -->
+                        <div class="skill-logo-card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex flex-col items-center">
+                            <div class="text-5xl mb-3 text-red-600">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4 class="text-sm font-semibold text-gray-900 text-center">Agile Practices</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section id="summary" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Professional Summary</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-lg">
+                        <div class="grid md:grid-cols-3 gap-8 mb-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600 mb-2">2</div>
+                                <div class="text-gray-600">Years Experience</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600 mb-2">10+</div>
+                                <div class="text-gray-600">Projects Completed</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600 mb-2">15+</div>
+                                <div class="text-gray-600">Technologies Mastered</div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                               Software Engineer with over 2 years of experience in building scalable, high-performance enterprise applications. Skilled in crafting robust APIs, secure authentication, and database-driven solutions. Strong foundation in object-oriented design, problem-solving, and data-driven application development, with a focus on delivering robust, maintainable, and end-to-end solutions.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-center space-x-4 text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500"></i>
+                                    <span>FullStack development for e-commerce and business applications.</span>
+                                </div>
+                                <div class="flex items-center justify-center space-x-4 text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500"></i>
+                                    <span>RESTful and GraphQL API design with secure JWT authentication.</span>
+                                </div>
+                                <div class="flex items-center justify-center space-x-4 text-gray-600">
+                                    <i class="fas fa-check-circle text-green-500"></i>
+                                    <span>MySQL optimization and third-party service integration.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button onclick="downloadResume()" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300 inline-flex items-center space-x-2">
+                            <i class="fas fa-download"></i>
+                            <span>Download Resume</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-fade">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Get In Touch</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            I'm always interested in new opportunities and exciting projects. 
+                            Whether you have a question or just want to say hi, feel free to reach out!
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Email</div>
+                                    <div class="text-gray-600">priyanshulaad28@gmail.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-phone text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Phone</div>
+                                    <div class="text-gray-600">+91 7694026775</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-900">Location</div>
+                                    <div class="text-gray-600">Indore, India</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 font-semibold mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                                Send Message
+                            </button>
+                            <div id="form-message" class="mt-4 text-center hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-6">Priyanshu Laad</h3>
+                <p class="text-gray-400 mb-8">Software Engineer & Backend Developer</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/priyanshu-laad-43a1b0229/" target="_blank" class="bg-blue-600 hover:bg-blue-700 p-3 rounded-full transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Priyanshu0128" target="_blank" class="bg-gray-700 hover:bg-gray-600 p-3 rounded-full transition duration-300">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="mailto:priyanshulaad28@gmail.com" class="bg-red-600 hover:bg-red-700 p-3 rounded-full transition duration-300">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-400">&copy; 2025 Priyanshu Laad. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll and active navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars when skills section is visible
+                    if (entry.target.id === 'skills') {
+                        const skillBars = entry.target.querySelectorAll('.skill-bar');
+                        skillBars.forEach(bar => {
+                            setTimeout(() => {
+                                bar.classList.add('animate');
+                            }, 500);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections with fade animation
+        document.querySelectorAll('.section-fade').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('form-message');
+            formMessage.className = 'mt-4 text-center text-green-600';
+            formMessage.textContent = 'Thank you for your message! I\'ll get back to you soon.';
+            formMessage.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Resume download function
+          function downloadResume() {
+            // Replace 'path/to/your/resume.pdf' with the actual path to your PDF file
+            const resumeUrl = 'PriyanshulaadCv (1).pdf'; // Put your PDF file in the same folder as this HTML file
+            
+            // Alternative: If your PDF is in a subfolder, use: 'assets/resume.pdf' or 'documents/resume.pdf'
+            // Alternative: If hosted online, use the full URL: 'https://yourwebsite.com/resume.pdf'
+            
+            const link = document.createElement('a');
+            link.href = resumeUrl;
+            link.download = 'Priyanshu_laad_resume.pdf'; // This will be the downloaded filename
+            link.target = '_blank'; // Opens in new tab if download fails
+            
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        // Initialize active nav on page load
+        updateActiveNav();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ae7c93219e3fe4',t:'MTc1NDQ4MjgwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
